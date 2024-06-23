@@ -7,9 +7,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Scripts -->
-    <script src="{{ asset('js/init-alpine.js') }}"></script>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
     <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen }">
@@ -33,7 +31,9 @@
             </main>
         </div>
     </div>
-
+    <!-- Scripts -->
+    @vite(['resources/js/app.js'])
+    <script src="{{ asset('js/init-alpine.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputElement = document.querySelector('input[type="file"]');

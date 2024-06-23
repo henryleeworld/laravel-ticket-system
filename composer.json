@@ -1,31 +1,30 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
         "coderflex/laravel-ticket": "^1.5",
         "guzzlehttp/guzzle": "^7.8",
-        "laravel/framework": "^9.52",
+        "laravel/framework": "^10.34",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "spatie/laravel-activitylog": "^4.7",
-        "spatie/laravel-medialibrary": "^10.13.0",
-        "spatie/laravel-permission": "^5.11",
+        "spatie/laravel-medialibrary": "^10.15.0",
+        "spatie/laravel-permission": "^6.1",
         "spatie/query-string": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23.0",
-        "laravel/breeze": "^1.19",
-        "barryvdh/laravel-debugbar": "^3.9",
+        "laravel/breeze": "^1.26",
         "laravel/pint": "^1.13",
-        "laravel/sail": "^1.25.0",
+        "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6.6",
-        "nunomaduro/collision": "^6.4",
-        "phpunit/phpunit": "^9.6.13",
-        "spatie/laravel-ignition": "^1.6"
+        "nunomaduro/collision": "^7.10",
+        "phpunit/phpunit": "^10.4",
+        "spatie/laravel-ignition": "^2.3"
     },
     "autoload": {
         "psr-4": {
@@ -67,9 +66,10 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

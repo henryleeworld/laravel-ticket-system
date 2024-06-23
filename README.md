@@ -1,4 +1,4 @@
-# Laravel 9 工單系統
+# Laravel 10 工單系統
 
 引入 coderflex 的 laravel-ticket 套件來擴增工單系統，可用於追蹤、排列優先等級並解決客戶支援工單。
 
@@ -16,13 +16,13 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
-- 執行 __Artisan__ 指令的 __storage:link__ 來建立連結符號，讓公用可存取的檔案維持在一個目錄中。
-```sh
-$ php artisan storage:link
-```
 - 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移，並執行資料庫填充（如果要測試的話）。
 ```sh
 $ php artisan migrate --seed
+```
+- 執行 __Artisan__ 指令的 __storage:link__ 來建立連結符號，讓公用可存取的檔案維持在一個目錄中。
+```sh
+$ php artisan storage:link
 ```
 - 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
 ```sh
@@ -38,5 +38,5 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/6Ks5S7s.png)
+![](https://i.imgur.com/KlKSBBK.png)
 > 新增工單，檢視內容是否完整

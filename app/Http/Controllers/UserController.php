@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Spatie\Permission\Models\Role;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -29,7 +29,7 @@ class UserController extends Controller
         $user = User::create([
             'name'     => $request->input('name'),
             'email'    => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => $request->input('password'),
         ]);
 
         $user->assignRole($request->input('role'));
@@ -47,13 +47,12 @@ class UserController extends Controller
     public function update(EditUserRequest $request, User $user)
     {
         if ($request->has('password')) {
-            $user->update(['password' => bcrypt($request->input('password'))]);
+            $user->update(['password' => $request->input('password')]);
         }
 
         $user->update([
             'name'     => $request->input('name'),
             'email'    => $request->input('email'),
-            'password' => $request->has('password') ? bcrypt($request->input('password')) : '',
         ]);
 
         $user->syncRoles($request->input('role'));

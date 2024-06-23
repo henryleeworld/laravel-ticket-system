@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css'])
         <!-- Scripts -->
         <script src="{{ asset('js/init-alpine.js') }}"></script>
 </head>
@@ -18,6 +18,6 @@
             {{ $slot }}
         </div>
     </div>
-
+    @vite(['resources/js/app.js'])
 </body>
 </html>
