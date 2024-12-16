@@ -48,7 +48,7 @@
                         @foreach($roles as $id => $name)
                             <div class="inline-flex space-x-1">
                                 <input class="text-purple-600 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple" type="radio" name="role" id="role-{{ $id }}" value="{{ $id }}" @checked($id == old('role') || $name == 'agent')>
-                                <label class="text-sm text-gray-700" for="role-{{ $id }}">{{ $name }}</label>
+                                <label class="text-sm text-gray-700" for="role-{{ $id }}">{{ __($name) }}</label>
                             </div>
                         @endforeach
                     </div>

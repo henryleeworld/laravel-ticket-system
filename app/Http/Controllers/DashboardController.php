@@ -6,6 +6,9 @@ use Coderflex\LaravelTicket\Models\Ticket;
 
 class DashboardController extends Controller
 {
+    /**
+     * Provision a new web server.
+     */
     public function __invoke()
     {
         $totalTickets = Ticket::count();

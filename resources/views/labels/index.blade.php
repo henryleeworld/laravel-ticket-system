@@ -26,7 +26,7 @@
                         @forelse($labels as $label)
                             <tr class="text-gray-700">
                                 <td class="px-4 py-3 text-sm">
-                                    {{ $label->name }}
+                                    {{ __($label->name) }}
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     {{ $label->slug }}

@@ -26,7 +26,7 @@
                         @forelse($categories as $category)
                             <tr class="text-gray-700">
                                 <td class="px-4 py-3 text-sm">
-                                    {{ $category->name }}
+                                    {{ __($category->name) }}
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     {{ $category->slug }}

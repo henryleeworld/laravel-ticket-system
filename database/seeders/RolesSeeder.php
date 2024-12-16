@@ -8,7 +8,10 @@ use Spatie\Permission\Models\Role;
 
 class RolesSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeders.
+     */
+    public function run(): void
     {
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'agent']);

@@ -7,7 +7,10 @@ use Illuminate\Database\Seeder;
 
 class LabelsSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeders.
+     */
+    public function run(): void
     {
         $labels = [
             "bug", "question", "enhancement",

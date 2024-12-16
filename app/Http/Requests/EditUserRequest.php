@@ -8,6 +8,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class EditUserRequest extends FormRequest
 {
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     */
     public function rules(): array
     {
         return [
@@ -18,12 +23,18 @@ class EditUserRequest extends FormRequest
         ];
     }
 
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
     }
 
-    protected function prepareForValidation()
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
     {
         if ($this->password == null) {
             $this->request->remove('password');

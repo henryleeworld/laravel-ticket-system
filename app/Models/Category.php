@@ -7,14 +7,23 @@ use Illuminate\Support\Str;
 
 class Category extends TicketCategory
 {
-    protected $casts = [
-        'is_visible' => 'boolean',
-    ];
-
-    public static function boot()
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        parent::boot();
+        return [
+            'is_visible' => 'boolean',
+        ];
+    }
 
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
         static::saving(function (Category $category) {
             $category->slug = Str::slug($category->name);
         });

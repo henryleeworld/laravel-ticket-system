@@ -1,4 +1,4 @@
-# Laravel 10 工單系統
+# Laravel 11 工單系統
 
 引入 coderflex 的 laravel-ticket 套件來擴增工單系統，可用於追蹤、排列優先等級並解決客戶支援工單。
 
@@ -38,5 +38,5 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/KlKSBBK.png)
+![](https://i.imgur.com/L02cX8s.png)
 > 新增工單，檢視內容是否完整

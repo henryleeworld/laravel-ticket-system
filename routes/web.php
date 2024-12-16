@@ -11,16 +11,6 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 Route::redirect('/', '/login');
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -28,17 +18,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->middleware(['role:admin|agent'])->name('dashboard');
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::post('tickets/upload', [TicketController::class, 'upload'])->name('tickets.upload');
     Route::patch('tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
     Route::patch('tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
     Route::patch('tickets/{ticket}/archive', [TicketController::class, 'archive'])->name('tickets.archive');
     Route::resource('tickets', TicketController::class);
-
     Route::middleware('role:admin')->group(function () {
         Route::resource('users', UserController::class)->except('show');
 
@@ -47,9 +34,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('categories', CategoryController::class)->middleware('role:admin');
         Route::resource('labels', LabelController::class)->middleware('role:admin');
     });
-
     Route::post('messages/{ticket}', [MessageController::class, 'store'])->name('message.store');
-
     Route::get('download/attachment/{mediaItem}', DownloadAttachmentController::class)->name('attachment-download');
 });
 

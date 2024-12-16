@@ -25,7 +25,7 @@
             <select class="block w-full rounded-md border-gray-300 shadow-sm focus-within:text-primary-600 focus:border-primary-300 focus:ring-primary-200 focus:ring focus:ring-opacity-50" name="category" id="category" onchange="window.location.href=this.value">
                 <option value="{{ clearQueryString('category') }}">-- {{ __('SELECT CATEGORY') }} --</option>
                     @foreach(\App\Models\Category::pluck('name', 'id') as $id => $name)
-                        <option value="{{ toggle('category', (string) $id) }}" @selected($id == request('category'))>{{ $name }}</option>
+                        <option value="{{ toggle('category', (string) $id) }}" @selected($id == request('category'))>{{ __($name) }}</option>
                     @endforeach
             </select>
         </div>
@@ -67,12 +67,12 @@
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     @foreach($ticket->categories as $category)
-                                        <span class="rounded-full bg-gray-50 px-2 py-2">{{ $category->name }}</span>
+                                        <span class="rounded-full bg-gray-50 px-2 py-2">{{ __($category->name) }}</span>
                                     @endforeach
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     @foreach($ticket->labels as $label)
-                                        <span class="rounded-full bg-gray-50 px-2 py-2">{{ $label->name }}</span>
+                                        <span class="rounded-full bg-gray-50 px-2 py-2">{{ __($label->name) }}</span>
                                     @endforeach
                                 </td>
                                 @hasanyrole('admin|agent')

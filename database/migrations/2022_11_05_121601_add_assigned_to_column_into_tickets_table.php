@@ -8,10 +8,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->unsignedBigInteger('assigned_to')->nullable()->references('id')->on('users')->after('is_locked');
+            $table->unsignedBigInteger('assigned_to')->nullable()->after('is_locked');
+            $table->foreign('assigned_to')->references('id')->on('users');
         });
     }
 };
