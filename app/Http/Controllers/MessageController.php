@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Notification;
 
 class MessageController extends Controller
 {
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(MessageRequest $request, Ticket $ticket): RedirectResponse
     {
         $message = $ticket->messages()->create($request->validated() + ['user_id' => auth()->user()->id]);

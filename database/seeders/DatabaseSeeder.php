@@ -13,22 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => __('Administrator'),
-            'email' => 'admin@admin.com',
-        ]);
-
-        User::factory()->create([
-            'name' => __('Agent User'),
-            'email' => 'agent@agent.com',
-        ]);
-
         $this->call([
+            UserSeeder::class,
             CategoriesSeeder::class,
             LabelsSeeder::class,
             RolesSeeder::class,
         ]);
-
         User::factory()
             ->count(10)
             ->create()

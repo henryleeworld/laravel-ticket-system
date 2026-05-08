@@ -13,12 +13,13 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements CanUseTickets
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, HasRoles, HasTickets, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -29,7 +30,7 @@ class User extends Authenticatable implements CanUseTickets
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',

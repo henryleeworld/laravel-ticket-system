@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request): View
     {
         $tickets = Ticket::with('user', 'categories', 'labels', 'assignedToUser')
@@ -39,6 +42,9 @@ class TicketController extends Controller
         return view('tickets.index', compact('tickets'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create(): View
     {
         $labels = Label::visible()->pluck('name', 'id');
@@ -50,6 +56,9 @@ class TicketController extends Controller
         return view('tickets.create', compact('labels', 'categories', 'users'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(TicketRequest $request)
     {
         $ticket = auth()->user()->tickets()->create($request->only('title', 'message', 'status', 'priority'));
@@ -75,6 +84,9 @@ class TicketController extends Controller
         return to_route('tickets.index');
     }
 
+    /**
+     * Display the specified resource.
+     */
     public function show(Ticket $ticket): View
     {
         $this->authorize('view', $ticket);
@@ -83,6 +95,9 @@ class TicketController extends Controller
         return view('tickets.show', compact('ticket'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Ticket $ticket): View
     {
         $this->authorize('update', $ticket);
@@ -96,6 +111,9 @@ class TicketController extends Controller
         return view('tickets.edit', compact('ticket', 'labels', 'categories', 'users'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(TicketRequest $request, Ticket $ticket)
     {
         $this->authorize('update', $ticket);
@@ -119,6 +137,9 @@ class TicketController extends Controller
         return to_route('tickets.index');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Ticket $ticket)
     {
         $this->authorize('delete', $ticket);
