@@ -25,7 +25,7 @@ class Label extends TicketLabel
     protected static function booted(): void
     {
         static::saving(function (Label $category) {
-            $category->slug = Str::slug($category->name);
+            $category->slug = Str::slug($category->name, language: app()->getLocale());
         });
     }
 }

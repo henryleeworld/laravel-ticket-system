@@ -10,6 +10,11 @@ class NewTicketCreatedNotification extends Notification
 {
     public function __construct(protected Ticket $ticket) {}
 
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array<int, string>
+     */
     public function via($notifiable): array
     {
         if (config('app.enable_notifications')) {
@@ -19,15 +24,23 @@ class NewTicketCreatedNotification extends Notification
         return [];
     }
 
+    /**
+     * Get the mail representation of the notification.
+     */
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New ticket')
-            ->line('New ticket have been created: ' . $this->ticket->title)
-            ->action('View ticket', route('tickets.show', $this->ticket))
-            ->line('Thank you!');
+            ->subject(__('New ticket'))
+            ->line(__('New ticket have been created: ') . $this->ticket->title)
+            ->action(__('View ticket'), route('tickets.show', $this->ticket))
+            ->line(__('Thank you!'));
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @return array<string, mixed>
+     */
     public function toArray($notifiable): array
     {
         return [];

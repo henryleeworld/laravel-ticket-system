@@ -2,15 +2,20 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Coderflex\LaravelTicket\Models\Message;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class CommentEmailNotification extends Notification
 {
     public function __construct(protected Message $message)
     {}
 
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array<int, string>
+     */
     public function via($notifiable): array
     {
         if (config('app.enable_notifications')) {
@@ -20,16 +25,24 @@ class CommentEmailNotification extends Notification
         return [];
     }
 
+    /**
+     * Get the mail representation of the notification.
+     */
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New comment on ticket ' . $this->message->ticket->title)
-            ->line('New comment on ticket '.$this->message->ticket->title . ':')
+            ->subject(__('New comment on ticket :title', ['title' => $this->message->ticket->title]))
+            ->line(__('New comment on ticket :title:', ['title' => $this->message->ticket->title]))
             ->line($this->message->message)
-            ->action('View full ticket', route('tickets.show', $this->message->ticket))
-            ->line('Thank you!');
+            ->action(__('View full ticket'), route('tickets.show', $this->message->ticket))
+            ->line(__('Thank you!'));
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @return array<string, mixed>
+     */
     public function toArray($notifiable): array
     {
         return [];

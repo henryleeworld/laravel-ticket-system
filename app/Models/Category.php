@@ -25,7 +25,7 @@ class Category extends TicketCategory
     protected static function booted(): void
     {
         static::saving(function (Category $category) {
-            $category->slug = Str::slug($category->name);
+            $category->slug = Str::slug($category->name, language: app()->getLocale());
         });
     }
 }
