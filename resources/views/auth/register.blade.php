@@ -40,6 +40,8 @@
                         <x-text-input type="password"
                                  name="password"
                                  class="block w-full"
+                                 autocomplete="new-password"
+                                 passwordrules="{{ \Illuminate\Validation\Rules\Password::defaults()->toPasswordRulesString() }}"
                                  required/>
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
@@ -49,6 +51,8 @@
                         <x-text-input type="password"
                                  name="password_confirmation"
                                  class="block w-full"
+                                 autocomplete="new-password"
+                                 passwordrules="{{ \Illuminate\Validation\Rules\Password::defaults()->toPasswordRulesString() }}"
                                  required/>
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
